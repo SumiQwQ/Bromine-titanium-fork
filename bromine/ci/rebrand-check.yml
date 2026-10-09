@@ -1,0 +1,13 @@
+# Copy to .github/workflows/rebrand-check.yml in your fork.
+# Smoke test: shows what the Bromine rebrand would touch, without changing anything.
+name: Bromine rebrand check
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow
+      - run: bash bromine/scripts/rebrand.sh --dry-run
